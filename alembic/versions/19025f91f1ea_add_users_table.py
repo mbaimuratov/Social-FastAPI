@@ -2,6 +2,8 @@ from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.engine.reflection import Inspector
 
+# bpTJ8E9?vLXxLfU
+
 # revision identifiers, used by Alembic.
 revision = '19025f91f1ea'
 down_revision = '6ac47976d4c4'
