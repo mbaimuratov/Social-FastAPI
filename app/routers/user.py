@@ -8,7 +8,6 @@ router = APIRouter(
     tags=["Users"]
 )
 
-# get all users
 @router.get("/", response_model=list[schemas.UserOut])
 def get_users(db: Session = Depends(get_db)):
     users = db.query(models.User).all()
@@ -31,7 +30,6 @@ def get_user(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     return user
 
-# delete user
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()

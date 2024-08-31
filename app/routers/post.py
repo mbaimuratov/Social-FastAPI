@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=List[schemas.PostOut])
-def get_posts(db: Session = Depends(get_db), limit: int = 10, skip: int = 0, search: Optional[str] = ""):
+def get_posts(db: Session = Depends(get_db), limit: int = 10, skip: int = 0, search: Optional[str] = "", current_user: schemas.TokenData = Depends(oauth2.get_current_user)):
     result = db.query(models.Post, func.count(models.Vote.post_id).label('votes')) \
         .group_by(models.Post.id) \
         .outerjoin(models.Vote, models.Vote.post_id == models.Post.id) \
