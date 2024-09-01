@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    env:
+    environment:
       name: testing
     services:
       postgres:
