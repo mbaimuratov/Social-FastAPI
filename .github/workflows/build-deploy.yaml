@@ -10,8 +10,16 @@ on:
 
 jobs:
   build:
-    environment:
-      name: testing
+    env:
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: fastapi
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      SECRET_KEY: f7e7e7b1dfa221
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      
     services:
       postgres:
         image: postgres
